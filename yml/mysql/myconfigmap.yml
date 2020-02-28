@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: myconfigmap
+data:
+  logging.conf: | 
+    class: logging.handlers.RotatFileHandler
+    formatter: precise
+    level: INFO
+    filename: %hostname-%timestamp.log

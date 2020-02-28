@@ -1,0 +1,15 @@
+
+.settings/
+.clover/
+target/
+.idea/
+.idea/*
+.svn/
+
+.project
+.settings
+.classpath
+.settings/
+.tern-project
+
+*.iml

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: linkenpeng-openjdk
+  namespace: default
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: peter-java-base
+      labels:
+        app: peter-java-base
+    spec:
+      containers:
+        - name: linkenpeng-java-base
+          image: linkenpeng/centos7.7-openjdk8-jre:1.2
+          imagePullPolicy: IfNotPresent
+          command: [ "/bin/bash", "-ce", "tail -f /dev/null" ]
+  selector:
+    matchLabels:
+      app: linkenpeng-java-base
