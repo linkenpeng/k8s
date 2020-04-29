@@ -5,7 +5,7 @@ RUN mkdir /usr/local/jdk && \
     rm -rf /etc/yum.repos.d/* && \
     curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo && \
     curl -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo && \
-    yum -y install vim
+    yum -y install vim4
 WORKDIR /usr/local/jdk
 ADD OpenJDK8U-jre_x64_linux_hotspot_8u242b08.tar.gz /usr/local/jdk
 
