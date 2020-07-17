@@ -1,35 +1,35 @@
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: linken-nginx
+  name: linken-zipkin
   namespace: linken
 spec:
   selector:
     matchLabels:
-      app: linken-nginx
+      app: linken-zipkin
   template:
     metadata:
       labels:
-        app: linken-nginx
+        app: linken-zipkin
     spec:
       containers:
-      - image: nginx:1.18.0
+      - image: openzipkin/zipkin
         imagePullPolicy: IfNotPresent
-        name: linken-nginx
+        name: linken-zipkin
         ports:
-        - containerPort: 80
+        - containerPort: 9411
           protocol: TCP
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: linken-nginx-svc
+  name: linken-zipkin-svc
   namespace: linken
 spec:
+  selector:
+    app: linken-zipkin
   type: NodePort
   ports:
-  - port: 8080
+  - port: 9411
     protocol: TCP
-    targetPort: 80
-  selector:
-    run: linken-nginx
+    targetPort: 9411
